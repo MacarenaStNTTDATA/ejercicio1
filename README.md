@@ -73,6 +73,5 @@ Separación de responsabilidades y mejor control de errores frente a consumo cli
 - No incluye tests automatizados.
 
 ## Video Demo
-
-Archivo incluido en el repositorio:
-demo.mp4 EN EL APARTADO REALEASE ->>
+El vídeo de demostración (4 minutos) está disponible en GitHub Releases
+[Descargar vídeo demostración](https://github.com/MacarenaStNTTDATA/ejercicio1/releases/tag/Video)
