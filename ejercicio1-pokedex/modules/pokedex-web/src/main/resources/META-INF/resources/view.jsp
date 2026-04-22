@@ -25,6 +25,11 @@ int startPage = Math.max(1, currentPage - 1);
 int endPage = Math.min(totalPages, currentPage + 1);
 %>
 
+ <div id="loadingOverlay" class="loading-overlay">
+            <div class="spinner"></div>
+            <p>Cargando Pokémon...</p>
+        </div>
+
 <div class="pokedex-container">
 
     <% if (Boolean.TRUE.equals(error)) { %>
@@ -45,16 +50,6 @@ int endPage = Math.min(totalPages, currentPage + 1);
         </div>
 
     <% } else { %>
-
-        <div id="loadingMessage">
-            Cargando Pokémon...
-        </div>
-
-        <script>
-            window.addEventListener("load", function() {
-                document.getElementById("loadingMessage").style.display = "none";
-            });
-        </script>
 
         <div class="pokedex-grid">
 
@@ -122,3 +117,14 @@ int endPage = Math.min(totalPages, currentPage + 1);
     <% } %>
 
 </div>
+
+<script>
+    setTimeout(function () {
+        var loader = document.getElementById("loadingOverlay");
+        if (loader) {
+            loader.style.display = "none";
+        }
+    }, 1200);
+</script>
+
+
