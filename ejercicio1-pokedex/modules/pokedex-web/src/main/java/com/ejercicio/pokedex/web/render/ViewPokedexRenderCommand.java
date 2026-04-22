@@ -90,6 +90,12 @@ public class ViewPokedexRenderCommand implements MVCRenderCommand {
             renderRequest.setAttribute("error", true);
         }
 
+        //Demo estado vacío, navegación: ?page=999
+        if (page == 999) {
+            renderRequest.setAttribute("pokemonItems", new ArrayList<>());
+            return "/view.jsp";
+        }
+
 
         return "/view.jsp";
     }

@@ -1,6 +1,7 @@
 Bundle-Name: pokedex-web
 Bundle-SymbolicName: com.ejercicio.pokedex.web
 Bundle-Version: 1.0.0
+Web-ContextPath: /pokedex-web
 Export-Package: com.ejercicio.pokedex.web.constants
 Provide-Capability:\
 	liferay.language.resources;\

@@ -1,8 +1,6 @@
 <%@ include file="/init.jsp" %>
-<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-
 <%@ page import="com.ejercicio.pokedex.web.dto.PokemonDetail" %>
-<%@ page import="java.util.List" %>
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 
 <%
 Boolean error = (Boolean) request.getAttribute("error");
@@ -10,42 +8,68 @@ PokemonDetail detail =
         (PokemonDetail) request.getAttribute("pokemonDetail");
 %>
 
-<h2>Detalle del Pokémon</h2>
+<div class="pokedex-container">
 
-<% if (Boolean.TRUE.equals(error)) { %>
+    <% if (Boolean.TRUE.equals(error) || detail == null) { %>
 
-    <div style="color:red;">
-        Error al cargar el detalle del Pokémon.
-    </div>
-
-<% } else if (detail == null) { %>
-
-    <div>No se encontró información.</div>
-
-<% } else { %>
-
-    <div style="display:flex; gap:30px; align-items:flex-start;">
-
-        <img src="<%= detail.getImageUrl() %>" width="150" />
-
-        <div>
-            <p><strong>ID:</strong> <%= detail.getId() %></p>
-            <p><strong>Nombre:</strong> <%= detail.getName() %></p>
-            <p><strong>Altura:</strong> <%= detail.getHeight() %></p>
-            <p><strong>Peso:</strong> <%= detail.getWeight() %></p>
-
-            <p><strong>Tipos:</strong></p>
-            <ul>
-                <%
-                for (String type : detail.getTypes()) {
-                %>
-                    <li><%= type %></li>
-                <%
-                }
-                %>
-            </ul>
+        <div class="pokedex-error">
+            Error al cargar el Pokémon.
         </div>
 
-    </div>
+    <% } else { %>
 
-<% } %>
+        <portlet:renderURL var="backURL" />
+
+        <div class="pokemon-detail-card">
+
+            <div class="detail-header">
+                <span class="detail-number">#<%= detail.getId() %></span>
+                <h2 class="detail-name">
+                    <%= detail.getName().substring(0,1).toUpperCase() + detail.getName().substring(1) %>
+                </h2>
+            </div>
+
+            <div class="detail-body">
+
+                <img src="<%= detail.getImageUrl() %>"
+                     alt="<%= detail.getName() %>"
+                     class="detail-image" />
+
+                <div class="detail-info">
+
+                    <div class="detail-row">
+                        <span class="label">Altura</span>
+                        <span><%= detail.getHeight() %></span>
+                    </div>
+
+                    <div class="detail-row">
+                        <span class="label">Peso</span>
+                        <span><%= detail.getWeight() %></span>
+                    </div>
+
+                    <div class="detail-row">
+                        <span class="label">Tipos</span>
+                        <div class="type-container">
+                            <% for (String type : detail.getTypes()) { %>
+                                <span class="pokemon-type">
+                                    <%= type.substring(0,1).toUpperCase() + type.substring(1) %>
+                                </span>
+                            <% } %>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="detail-footer">
+                <a href="<%= backURL %>" class="back-button">
+                    ← Volver a la Pokédex
+                </a>
+            </div>
+
+        </div>
+
+    <% } %>
+
+</div>

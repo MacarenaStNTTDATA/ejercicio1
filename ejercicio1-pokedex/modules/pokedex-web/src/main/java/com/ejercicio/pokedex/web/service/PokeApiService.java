@@ -17,8 +17,11 @@ public class PokeApiService {
     private static final String BASE_URL = "https://pokeapi.co/api/v2/pokemon";
 
     public JSONObject getPokemonPage(int limit, int offset) throws Exception {
+        //Demo Loading
+        Thread.sleep(1500);
 
         String urlString = BASE_URL + "?limit=" + limit + "&offset=" + offset;
+        // Demo Error: BASE_URL = "https://pokeapi.co/api/v2/pokemonXXXX";
 
         URL url = new URL(urlString);
         HttpURLConnection connection = (HttpURLConnection) url.openConnection();
