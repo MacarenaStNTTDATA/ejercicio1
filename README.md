@@ -42,7 +42,7 @@ Sigue estos pasos para desplegar el módulo en tu entorno local:
 ## Decisiones Técnicas:
 Para este desarrollo se han tomado las siguientes decisiones de diseño para garantizar escalabilidad y mantenibilidad:
 
--### ✅ Arquitectura
+### ✅ Arquitectura
 - Implementación basada en **MVC Portlet**
 - Uso de `MVCRenderCommand` para separar:
   - Vista principal (listado)
